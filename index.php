@@ -10,6 +10,11 @@
   Hi there!
   <?php
 
+    function writeName($y){
+      $x = "My name is". $y;
+      echo $x;
+    }
+    writeName(" Upasana");
   ?>
 </body>
 
