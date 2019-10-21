@@ -1,0 +1,70 @@
+command -v mysql
+ps -ef | grep mysql
+mysql -h localhost -u root -p
+welcome2mysql
+
+Create new user
+CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost';
+
+Create database:
+CREATE DATABASE databasename;
+
+Use the db:
+USE databasename;
+
+CREATE new table:
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+    );
+
+Show tables:
+show tables;
+
+Show the entire table:
+DESC tablename;
+
+Insert values into Table:
+INSERT INTO Persons VALUES (1, "harry", "doe", "4555 qfwdjqwhdwj", "Burnaby");
+
+Select from table:
+SELECT * FROM Persons; (selects everything and displays)
+
+Select only first name and last name:
+SELECT FirstName, LastName FROM Persons;
+
+Update value:
+UPDATE Customers SET ContactName = 'Alfred Schmidt', City= 'Frankfurt' WHERE CustomerID = 1;
+
+Arrange In descending order:
+SELECT * FROM Persons ORDER BY PersonID Desc;
+
+Select anything that has partial matches, foe instance here any first name with do:
+SELECT * FROM Persons WHERE FirstName LIKE "%do%";
+
+SELECT * FROM Persons WHERE FirstName = "doe";
+
+SELECT COUNT(PersonID),City FROM Persons GROUP BY City;
+
+Adding a new column in table:
+ALTER TABLE Persons ADD Age int;
+Updating data:
+UPDATE Persons SET Age = 15 WHERE PersonID = 1;
+
+Calculate Average:
+SELECT AVERAGE(Age) FROM Persons;
+
+Calculate Average from select city:
+SELECT COUNT(PersonID),City,AVG(Age) FROM Persons GROUP BY City;
+Calculate Sum from select city groups:
+SELECT COUNT(PersonID),City,SUM(Age) FROM Persons GROUP BY City;
+
+SELECT AVG(Age) FROM Persons  WHERE FirstName LIKE "d%";
+
+Show the number of people per city where the average age of people in the city is more than 25. It groups by City
+NOTE: HAVING is always associated with GROUP BY.
+SELECT COUNT(PersonID),City FROM Persons GROUP BY City HAVING AVG(Age) > 25;

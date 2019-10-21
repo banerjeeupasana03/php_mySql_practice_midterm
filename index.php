@@ -9,12 +9,13 @@ $quotes = [
   "Sometimes you have to get rid of everything"
 ];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $quote = $_POST["quote"];
+  $quote = $_POST["quoteField"];
 
   $file = fopen("quote.txt", "w");
   fwrite($file, $quote);
   fclose($file);
-  echo json_encode(["message" => "Successfully added quote"]);
+  $resp = ["message" => "Successfully added quote"];
+  echo json_encode($resp);
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -22,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = array_rand($quotes);
   }
 
-  $data = ["quote" => $quotes[$id]];
+  $data = ["fooooooo" => $quotes[$id]];
 
   echo json_encode($data);
 

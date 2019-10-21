@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 <body>
 
 <form id="quoteForm">
-  <input type="text" name="quote">
+  <input type="text" name="quoteField">
   <input type="submit" value="Submit">
 </form>
 
@@ -19,11 +19,11 @@
 function createQuote(data) {
   $.ajax({
     type: "POST",
-    url: "kanye.php",
+    url: "index.php",
     data: data
-  }).then(data => {
+  }).then(function(data) {
     console.log(data);
-  }).catch(error => {
+  }).catch(function(error) {
     console.log("ERROR", error);
   });
 }
@@ -32,6 +32,17 @@ function createQuote(data) {
     const data = $(this).serialize();
     createQuote(data);
   });
+
+  function getQuote() {
+    $.ajax({
+      type: "GET",
+      url: "index.php?id=3",
+    }).then(function(data) {
+      console.log(data);
+    }).catch(function(error) {
+      console.log("ERROR", error);
+    });
+  }
 </script>
 
 </body>
