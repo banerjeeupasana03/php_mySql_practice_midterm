@@ -1,0 +1,38 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<form id="quoteForm">
+  <input type="text" name="quote">
+  <input type="submit" value="Submit">
+</form>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+function createQuote(data) {
+  $.ajax({
+    type: "POST",
+    url: "kanye.php",
+    data: data
+  }).then(data => {
+    console.log(data);
+  }).catch(error => {
+    console.log("ERROR", error);
+  });
+}
+  $("#quoteForm").on("submit", function(event) {
+    event.preventDefault();
+    const data = $(this).serialize();
+    createQuote(data);
+  });
+</script>
+
+</body>
+</html>

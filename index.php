@@ -1,21 +1,32 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<?php
+header("Content-type: application/json");
+$quotes = [
+  "Pulling up in the may bike",
+  "If I don't scream, if I don't say something then no one's going to say anything.",
+  "I wish I had a friend like me",
+  "Style is genderless",
+  "Believe in your flyness...conquer your shyness.",
+  "Sometimes you have to get rid of everything"
+];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $quote = $_POST["quote"];
 
-<head>
-  <meta charset="utf-8">
-  <title></title>
-</head>
+  $file = fopen("quote.txt", "w");
+  fwrite($file, $quote);
+  fclose($file);
+  echo json_encode(["message" => "Successfully added quote"]);
+} else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+  if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+  } else {
+    $id = array_rand($quotes);
+  }
 
-<body>
-  Hi there!
-  <?php
+  $data = ["quote" => $quotes[$id]];
 
-    function writeName($y){
-      $x = "My name is". $y;
-      echo $x;
-    }
-    writeName(" Upasana");
-  ?>
-</body>
+  echo json_encode($data);
 
-</html>
+} else {
+  http_response_code(400);
+  echo json_encode(["error" => "Method not supported"]);
+}
