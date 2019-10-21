@@ -1,0 +1,74 @@
+##### Php inbuilt String functions #####:
+
+The PHP strlen() function returns the length of a string.
+Eg: <?php
+echo strlen("Hello world!"); // outputs 12
+?>
+
+The PHP str_word_count() function counts the number of words in a string.
+<?php
+echo str_word_count("Hello world!"); // outputs 2
+?>
+
+The PHP strrev() function reverses a string.
+<?php
+echo strrev("Hello world!"); // outputs !dlrow olleH
+?
+
+The PHP strpos() function searches for a specific text within a string. If a match is found, the function returns the character position of the first match. If no match is found, it will return FALSE.
+<?php
+echo strpos("Hello world!", "world"); // outputs 6
+?>
+
+The PHP str_replace() function replaces some characters with some other characters in a string.
+<?php
+echo str_replace("world", "Dolly", "Hello world!"); // outputs Hello Dolly!
+?>
+
+##### PHP constant ######:
+To create a constant, use the define() function.
+Syntax: define(name, value, case-insensitive)
+Eg: <?php
+define("GREETING", "Welcome to W3Schools.com!");
+echo GREETING;
+?>
+Eg: Create a constant with a case-insensitive name:
+
+<?php
+define("GREETING", "Welcome to W3Schools.com!", true);
+echo greeting;
+?>
+
+Eg: Create an Array constant:
+
+<?php
+define("cars", [
+    "Alfa Romeo",
+    "BMW",
+    "Toyota"
+]);
+echo cars[0];
+?>
+
+Comparison Operators:
+
+Operator	Name		Example		Result	
+==		Equal		$x == $y	Returns true if $x is equal to $y
+	
+===		Identical	$x === $y	Returns true if $x is equal to $y, and 							they are of the same type	
+
+!=		Not equal	$x != $y	Returns true if $x is not equal to $y	
+
+<>		Not equal	$x <> $y	Returns true if $x is not equal to $y
+	
+!==		Not identical	$x !== $y	Returns true if $x is not equal to $y, or 						they are not of the same type	
+
+>		Greater than	$x > $y		Returns true if $x is greater than $y	
+
+<		Less than	$x < $y		Returns true if $x is less than $y
+	
+>=	Greater than or equal to$x >= $y	Returns true if $x is 									greater than or equal to 								$y
+	
+<=	Less than or equal to	$x <= $y	Returns true if $x is less than or 							equal to $y
+	
+<=>		Spaceship	$x <=> $y	Returns an integer less than, equal to, or 						greater than zero, depending on if $x is 						less than, equal to, or greater than $y. 
